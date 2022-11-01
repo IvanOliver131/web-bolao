@@ -1,0 +1,2 @@
+npx create-next-app@latest 
+- Deixa apenas as pastas pages e public
