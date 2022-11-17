@@ -1,2 +1,6 @@
 npx create-next-app@latest 
+
 - Deixa apenas as pastas pages e public
+
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
