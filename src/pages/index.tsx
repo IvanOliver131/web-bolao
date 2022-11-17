@@ -5,6 +5,7 @@ import userAvatarExampleImg from "../assets/users-avatars-example.png";
 import iconCheckImg from "../assets/icon-checked.svg";
 import { api } from "../lib/axios";
 import { FormEvent, useState } from "react";
+import { GetStaticProps } from "next";
 
 interface HomeProps {
   poolCount: number;
@@ -107,7 +108,7 @@ export default function Home(props: HomeProps) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const [poolCountResponse, guessCountResponse, userCountResponse] =
     await Promise.all([
       api.get(`pools/count`),
@@ -121,5 +122,6 @@ export const getServerSideProps = async () => {
       guessCount: guessCountResponse.data.count,
       userCount: userCountResponse.data.count,
     },
+    revalidate: 60 * 10, // 10 minutes
   };
 };
